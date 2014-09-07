@@ -7,6 +7,9 @@ The golden rule of CoffeeScript is: *"It's just JavaScript"*. The code compiles 
 
 [lein-coffeescript](https://github.com/vbauer/lein-coffeescript) is a Leiningen plugin that allows to use CoffeeScript compiler.
 
+[![Build Status](https://travis-ci.org/vbauer/lein-coffeescript.svg?branch=master)](https://travis-ci.org/vbauer/lein-coffeescript)
+[![Dependencies Status](http://jarkeeper.com/vbauer/lein-coffeescript/status.png)](http://jarkeeper.com/vbauer/lein-coffeescript)
+
 
 Pre-requirements
 ================
@@ -25,13 +28,6 @@ brew install node
 
 Installation
 ============
-
-To enable lein-coffeescript for your project, put the following in the :plugins vector of your project.clj file:
-
-![latest-version](https://clojars.org/lein-coffeescript/latest-version.svg)
-
-[![Build Status](https://travis-ci.org/vbauer/lein-coffeescript.svg?branch=master)](https://travis-ci.org/vbauer/lein-coffeescript)
-[![Dependencies Status](http://jarkeeper.com/vbauer/lein-coffeescript/status.png)](http://jarkeeper.com/vbauer/lein-coffeescript)
 
 Install [CoffeeScript](https://www.npmjs.org/package/coffee-script) to use lein-coffeescript plugin. It could be done in few ways:
 
@@ -52,11 +48,42 @@ lein npm install
 lein deps
 ```
 
+Setup
+-----
+
+To enable lein-coffeescript for your project, put the following in the :plugins vector of your project.clj file:
+
+![latest-version](https://clojars.org/lein-coffeescript/latest-version.svg)
+
 
 Configuration
 =============
 
-To enable this plugin in compile stage, use the following hook:
+To configure lein-coffeescript, put the :coffeescript parameter in the file project.clj. It could be a single configuration (simple map) or a collection of configurations (for multiple configuration).
+
+```clojure
+; single configuration
+:coffeescript {:includes "src/*.cs"}
+
+; multiple configurations
+:coffeescript [{:includes "src/*.cs"
+                :bare: false
+                :map true}
+               {:includes ["src/*.coffee" "resources/*.cs"]}
+                :bare: true}]
+```
+
+
+Configuration parameters
+------------------------
+
+*TODO*
+
+
+Hooks
+-----
+
+To enable this plugin in the compile stage, use the following hook:
 ```clojure
 :hooks [lein-coffeescript.plugin]
 ```
