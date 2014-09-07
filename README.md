@@ -57,6 +57,28 @@ To enable this plugin in compile stage, use the following hook:
 :hooks [lein-coffeescript.plugin]
 ```
 
+Examples
+========
+
+Detailed example
+----------------
+
+```clojure
+:coffeescript {:includes "resources/*.coffee"
+               :excludes ["resources/tests.coffee" "resources/bad.coffee"]
+               :map true
+               :join "app.js"
+               :output "target/js"
+               :bare false
+               :debug true}
+```
+
+
+Example project
+---------------
+
+Just clone the current repository and try to play with [example project](https://github.com/vbauer/lein-coffeescript/tree/master/example) for better understanding how to use lein-coffeescript.
+
 
 Might also like
 ===============
