@@ -67,10 +67,10 @@ To configure lein-coffeescript, put the :coffeescript parameter in the file proj
 
 ; multiple configurations
 :coffeescript [{:includes "src/*.cs"
-                :bare: false
+                :bare false
                 :map true}
                {:includes ["src/*.coffee" "resources/*.cs"]}
-                :bare: true}]
+                :bare true}]
 ```
 
 
@@ -129,6 +129,12 @@ Example project
 ---------------
 
 Just clone the current repository and try to play with [example project](https://github.com/vbauer/lein-coffeescript/tree/master/example) for better understanding how to use lein-coffeescript.
+
+
+Thanks to
+=========
+
+CoffeeScript author [Jeremy Ashkenas](https://github.com/jashkenas) and other developers who worked on this great project.
 
 
 Might also like
