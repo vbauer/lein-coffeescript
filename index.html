@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Lein-coffeescript by vbauer</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Lein-coffeescript</h1>
+        <p class="header">A Leiningen plugin for running CoffeeScript compiler</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/vbauer/lein-coffeescript/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/vbauer/lein-coffeescript/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/vbauer/lein-coffeescript">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/vbauer">vbauer</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="lein-coffeescript" class="anchor" href="#lein-coffeescript"><span class="octicon octicon-link"></span></a>lein-coffeescript</h1>
+
+<p><strong><a href="http://coffeescript.org">CoffeeScript</a> is a little language that compiles into JavaScript.</strong> Underneath that awkward Java-esque patina, JavaScript has always had a gorgeous heart. CoffeeScript is an attempt to expose the good parts of JavaScript in a simple way.</p>
+
+<p>The golden rule of CoffeeScript is: <em>"It's just JavaScript"</em>. The code compiles one-to-one into the equivalent JS, and there is no interpretation at runtime. You can use any existing JavaScript library seamlessly from CoffeeScript (and vice-versa). The compiled output is readable and pretty-printed, will work in every JavaScript runtime, and tends to run as fast or faster than the equivalent handwritten JavaScript.</p>
+
+<p><a href="https://github.com/vbauer/lein-coffeescript">lein-coffeescript</a> is a Leiningen plugin that allows to use CoffeeScript compiler.</p>
+
+<p><a href="https://travis-ci.org/vbauer/lein-coffeescript"><img src="https://travis-ci.org/vbauer/lein-coffeescript.svg?branch=master" alt="Build Status"></a>
+<a href="http://jarkeeper.com/vbauer/lein-coffeescript"><img src="http://jarkeeper.com/vbauer/lein-coffeescript/status.png" alt="Dependencies Status"></a></p>
+
+<h1>
+<a name="pre-requirements" class="anchor" href="#pre-requirements"><span class="octicon octicon-link"></span></a>Pre-requirements</h1>
+
+<p>Install <a href="http://nodejs.org/">NodeJS</a> and <a href="https://github.com/npm/npm">NPM</a> (package manager for Node) to install CoffeeScript:</p>
+
+<p>On Ubuntu:</p>
+
+<pre><code>sudo apt-get install nodejs
+</code></pre>
+
+<p>On Mac OS X:</p>
+
+<pre><code>brew install node
+</code></pre>
+
+<h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>Install <a href="https://www.npmjs.org/package/coffee-script">CoffeeScript</a> to use lein-coffeescript plugin. It could be done in few ways:</p>
+
+<ul>
+<li>Use NPM to install CoffeeScript globally:</li>
+</ul><pre><code>npm install lein-coffeescript -g
+</code></pre>
+
+<ul>
+<li>You can also install CoffeeScript in the current directory:</li>
+</ul><pre><code>npm install lein-coffeescript
+</code></pre>
+
+<ul>
+<li>Use <a href="https://github.com/bodil/lein-npm">lein-npm</a> plugin:</li>
+</ul><pre><code>lein npm install
+</code></pre>
+
+<ul>
+<li>Use just Leiningen:</li>
+</ul><pre><code>lein deps
+</code></pre>
+
+<h2>
+<a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
+
+<p>To enable lein-coffeescript for your project, put the following in the :plugins vector of your project.clj file:</p>
+
+<p><img src="https://clojars.org/lein-coffeescript/latest-version.svg" alt="latest-version"></p>
+
+<h1>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h1>
+
+<p>To configure lein-coffeescript, put the :coffeescript parameter in the file project.clj. It could be a single configuration (simple map) or a collection of configurations (for multiple configuration).</p>
+
+<div class="highlight highlight-clojure"><pre><span class="c1">; single configuration</span>
+<span class="ss">:coffeescript</span> <span class="p">{</span><span class="ss">:sources</span> <span class="s">"src/*.cs"</span><span class="p">}</span>
+
+<span class="c1">; multiple configurations</span>
+<span class="ss">:coffeescript</span> <span class="p">[{</span><span class="ss">:sources</span> <span class="s">"src/*.cs"</span>
+                <span class="ss">:bare</span> <span class="nv">false</span>
+                <span class="ss">:map</span> <span class="nv">true</span><span class="p">}</span>
+               <span class="p">{</span><span class="ss">:sources</span> <span class="p">[</span><span class="s">"src/*.coffee"</span> <span class="s">"resources/*.cs"</span><span class="p">]}</span>
+                <span class="ss">:bare</span> <span class="nv">true</span><span class="p">}]</span>
+</pre></div>
+
+<h2>
+<a name="configuration-parameters" class="anchor" href="#configuration-parameters"><span class="octicon octicon-link"></span></a>Configuration parameters</h2>
+
+<dl>
+<dt>:sources</dt>
+  <dd>List of input CoffeeScript sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a <a href="http://en.wikipedia.org/wiki/Glob_(programming)">Glob Patterns</a>
+</dd>
+
+  <dt>:excludes</dt>
+  <dd>List of glob patterns to prevent processing of some files. It is also possible to use both variants: single pattern and collection of patterns.</dd>
+
+  <dt>:map</dt>
+  <dd>Generate source maps alongside the compiled JavaScript files. Adds <code>sourceMappingURL</code> directives to the JavaScript as well. Default value: false</dd>
+
+  <dt>:bare</dt>
+  <dd>Compile the JavaScript without the top-level function safety wrapper. Default value: false</dd>
+
+  <dt>:join</dt>
+  <dd>Before compiling, concatenate all scripts together in the order they were passed, and write them into the specified file. Useful for building large projects. It is not defined by default.</dd>
+
+  <dt>:output</dt>
+  <dd>Write out all compiled JavaScript files into the specified directory. It is not defined by default. Source directory will be used of generated JS files</dd>
+
+</dl><h2>
+<a name="hooks" class="anchor" href="#hooks"><span class="octicon octicon-link"></span></a>Hooks</h2>
+
+<p>To enable this plugin in the compile stage, use the following hook:</p>
+
+<div class="highlight highlight-clojure"><pre><span class="ss">:hooks</span> <span class="p">[</span><span class="nv">lein-coffeescript.plugin</span><span class="p">]</span>
+</pre></div>
+
+<h1>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h1>
+
+<h2>
+<a name="detailed-example" class="anchor" href="#detailed-example"><span class="octicon octicon-link"></span></a>Detailed example</h2>
+
+<div class="highlight highlight-clojure"><pre><span class="ss">:coffeescript</span> <span class="p">{</span><span class="ss">:sources</span> <span class="s">"resources/*.coffee"</span>
+               <span class="ss">:excludes</span> <span class="p">[</span><span class="s">"resources/tests.coffee"</span> <span class="s">"resources/bad.coffee"</span><span class="p">]</span>
+               <span class="ss">:map</span> <span class="nv">true</span>
+               <span class="ss">:join</span> <span class="s">"app.js"</span>
+               <span class="ss">:output</span> <span class="s">"target/js"</span>
+               <span class="ss">:bare</span> <span class="nv">false</span>
+               <span class="ss">:debug</span> <span class="nv">true</span><span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="example-project" class="anchor" href="#example-project"><span class="octicon octicon-link"></span></a>Example project</h2>
+
+<p>Just clone the current repository and try to play with <a href="https://github.com/vbauer/lein-coffeescript/tree/master/example">example project</a> for better understanding how to use lein-coffeescript.</p>
+
+<h1>
+<a name="thanks-to" class="anchor" href="#thanks-to"><span class="octicon octicon-link"></span></a>Thanks to</h1>
+
+<p>CoffeeScript author <a href="https://github.com/jashkenas">Jeremy Ashkenas</a> and other developers who worked on this great project.</p>
+
+<h1>
+<a name="might-also-like" class="anchor" href="#might-also-like"><span class="octicon octicon-link"></span></a>Might also like</h1>
+
+<ul>
+<li>
+<a href="https://github.com/vbauer/lein-jslint">lein-jslint</a> - a Leiningen plugin for running javascript code through JSLint.</li>
+<li>
+<a href="https://github.com/vbauer/lein-jshint">lein-jshint</a> - a Leiningen plugin for running javascript code through JSHint.</li>
+<li>
+<a href="https://github.com/vbauer/lein-plantuml">lein-plantuml</a> - a Leiningen plugin for generating UML diagrams using PlantUML.</li>
+<li>
+<a href="https://github.com/asciidoctor/asciidoctor-lein-plugin">lein-asciidoctor</a> - A Leiningen plugin for generating documentation using Asciidoctor.</li>
+</ul><h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>Copyright © 2014 Vladislav Bauer</p>
+
+<p>Distributed under the Eclipse Public License, the same as Clojure.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
