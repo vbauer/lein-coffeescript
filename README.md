@@ -77,7 +77,27 @@ To configure lein-coffeescript, put the :coffeescript parameter in the file proj
 Configuration parameters
 ------------------------
 
-*TODO*
+<dl>
+
+  <dt>:includes</dt>
+  <dd>List of input CoffeeScript sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a <a href="http://en.wikipedia.org/wiki/Glob_(programming)">Glob Patterns</a></dd>
+
+  <dt>:excludes</dt>
+  <dd>List of glob patterns to prevent processing of some files. It is also possible to use both variants: single pattern and collection of patterns.</dd>
+
+  <dt>:map</dt>
+  <dd>Generate source maps alongside the compiled JavaScript files. Adds <code>sourceMappingURL</code> directives to the JavaScript as well. Default value: false</dd>
+
+  <dt>:bare</dt>
+  <dd>Compile the JavaScript without the top-level function safety wrapper. Default value: false</dd>
+
+  <dt>:join</dt>
+  <dd>Before compiling, concatenate all scripts together in the order they were passed, and write them into the specified file. Useful for building large projects. It is not defined by default.</dd>
+
+  <dt>:output</dt>
+  <dd>Write out all compiled JavaScript files into the specified directory. It is not defined by default. Source directory will be used of generated JS files</dd>
+
+</dl>
 
 
 Hooks
