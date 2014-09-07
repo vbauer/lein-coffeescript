@@ -6,14 +6,14 @@
 
 
   ; List of plugins
-  :plugins [[lein-coffeescript "0.1.0"]]
+  :plugins [[lein-coffeescript "0.1.1"]]
 
   ; List of hooks
   ; It's used for running lein-coffeescript during compile phase
   :hooks [lein-coffeescript.plugin]
 
   ; lein-coffeescript configuration
-  :coffeescript {:includes "resources/*.coffee"
+  :coffeescript {:sources "resources/*.coffee"
                  :excludes ["123"]
                  :map true
                  ;:join "app.js"

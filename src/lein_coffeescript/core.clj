@@ -13,10 +13,10 @@
 (defn- error [ex]
   (println
    (string/join "\r\n"
-                (str "An error has occurred: " (.getMessage ex))
-                "Something is wrong:"
-                " - installation: npm install coffee-script -g"
-                " - configuration: https://github.com/vbauer/lein-coffeescript")))
+                [(str "An error has occurred: " (.getMessage ex))
+                 "Something is wrong:"
+                 " - installation: npm install coffee-script -g"
+                 " - configuration: https://github.com/vbauer/lein-coffeescript"])))
 
 (defn- to-coll [e]
   (if (nil? e) [] (if (sequential? e) e [e])))
@@ -34,8 +34,8 @@
 (defn- configs [project] (to-coll (get project :coffeescript)))
 (defn- config-files [conf k] (scan-files (to-coll (get conf k))))
 
-(defn- conf-include-files [conf] (config-files conf :includes))
-(defn- conf-exclude-files [conf] (config-files conf :excludes))
+(defn- conf-sources [conf] (config-files conf :sources))
+(defn- conf-excludes [conf] (config-files conf :excludes))
 (defn- conf-map [conf] (get conf :map false))
 (defn- conf-bare [conf] (get conf :bare false))
 (defn- conf-join [conf] (get conf :join))
@@ -46,9 +46,9 @@
 ; Internal API: Runner configuration
 
 (defn- source-list [conf]
-  (let [includes (conf-include-files conf)
-        excludes (conf-exclude-files conf)
-        sources (remove (fn [s] (some #(.compareTo % s) excludes)) includes)]
+  (let [src (conf-sources conf)
+        ex (conf-excludes conf)
+        sources (remove (fn [s] (some #(.compareTo % s) ex)) src)]
     (map #(.getAbsolutePath %) sources)))
 
 (defn- param-map [conf] (if (conf-map conf) ["--map"]))

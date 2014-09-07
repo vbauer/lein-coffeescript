@@ -1,12 +1,13 @@
-/target
-/classes
-/checkouts
+target/
+classes/
+checkouts/
 pom.xml
 pom.xml.asc
 *.jar
 *.class
 /.lein-*
 /.nrepl-port
+node_modules/
 *.js
 *.map
 

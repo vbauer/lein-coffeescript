@@ -63,13 +63,13 @@ To configure lein-coffeescript, put the :coffeescript parameter in the file proj
 
 ```clojure
 ; single configuration
-:coffeescript {:includes "src/*.cs"}
+:coffeescript {:sources "src/*.cs"}
 
 ; multiple configurations
-:coffeescript [{:includes "src/*.cs"
+:coffeescript [{:sources "src/*.cs"
                 :bare false
                 :map true}
-               {:includes ["src/*.coffee" "resources/*.cs"]}
+               {:sources ["src/*.coffee" "resources/*.cs"]}
                 :bare true}]
 ```
 
@@ -79,7 +79,7 @@ Configuration parameters
 
 <dl>
 
-  <dt>:includes</dt>
+  <dt>:sources</dt>
   <dd>List of input CoffeeScript sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a <a href="http://en.wikipedia.org/wiki/Glob_(programming)">Glob Patterns</a></dd>
 
   <dt>:excludes</dt>
@@ -115,7 +115,7 @@ Detailed example
 ----------------
 
 ```clojure
-:coffeescript {:includes "resources/*.coffee"
+:coffeescript {:sources "resources/*.coffee"
                :excludes ["resources/tests.coffee" "resources/bad.coffee"]
                :map true
                :join "app.js"
