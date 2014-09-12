@@ -16,11 +16,11 @@ Pre-requirements
 
 Install [NodeJS](http://nodejs.org/) and [NPM](https://github.com/npm/npm) (package manager for Node) to install CoffeeScript:
 
-On Ubuntu:
+* On Ubuntu:
 ```
 sudo apt-get install nodejs
 ```
-On Mac OS X:
+* On Mac OS X:
 ```
 brew install node
 ```
@@ -31,19 +31,19 @@ Installation
 
 Install [CoffeeScript](https://www.npmjs.org/package/coffee-script) to use lein-coffeescript plugin. It could be done in few ways:
 
-- Use NPM to install CoffeeScript globally:
+* Use NPM to install CoffeeScript globally:
 ```
 npm install lein-coffeescript -g
 ```
-- You can also install CoffeeScript in the current directory:
+* You can also install CoffeeScript in the current directory:
 ```
 npm install lein-coffeescript
 ```
-- Use [lein-npm](https://github.com/bodil/lein-npm) plugin:
+* Use [lein-npm](https://github.com/bodil/lein-npm) plugin:
 ```
 lein npm install
 ```
-- Use just Leiningen:
+* Use just Leiningen:
 ```
 lein deps
 ```
@@ -80,13 +80,13 @@ Configuration parameters
 <dl>
 
   <dt>:sources</dt>
-  <dd>List of input CoffeeScript sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a <a href="http://en.wikipedia.org/wiki/Glob_(programming)">Glob Patterns</a></dd>
+  <dd>List of input CoffeeScript sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a <a href="http://en.wikipedia.org/wiki/Glob_(programming)">Glob Patterns</a>.</dd>
 
   <dt>:excludes</dt>
   <dd>List of glob patterns to prevent processing of some files. It is also possible to use both variants: single pattern and collection of patterns.</dd>
 
   <dt>:map</dt>
-  <dd>Generate source maps alongside the compiled JavaScript files. Adds <code>sourceMappingURL</code> directives to the JavaScript as well. Default value: false</dd>
+  <dd>Generate source maps alongside the compiled JavaScript files. Adds <code>sourceMappingURL</code> directives to the JavaScript as well. Default value: false.</dd>
 
   <dt>:bare</dt>
   <dd>Compile the JavaScript without the top-level function safety wrapper. Default value: false</dd>
@@ -95,7 +95,7 @@ Configuration parameters
   <dd>Before compiling, concatenate all scripts together in the order they were passed, and write them into the specified file. Useful for building large projects. It is not defined by default.</dd>
 
   <dt>:output</dt>
-  <dd>Write out all compiled JavaScript files into the specified directory. It is not defined by default. Source directory will be used of generated JS files</dd>
+  <dd>Write out all compiled JavaScript files into the specified directory. It is not defined by default. Source directory will be used of generated JS files.</dd>
 
 </dl>
 
