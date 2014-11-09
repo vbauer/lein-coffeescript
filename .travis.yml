@@ -1,7 +1,15 @@
 language: clojure
 lein: lein2
-script: lein2 uberjar
+before_install:
+  - sudo apt-get purge nodejs npm
+  - sudo apt-get install -y python-software-properties
+  - sudo add-apt-repository -y ppa:chris-lea/node.js
+  - sudo apt-get update
+  - sudo apt-get install -y nodejs
+  - sudo npm install -g coffee-script
+script: lein2 with-profile dev midje && lein2 uberjar
 jdk:
   - openjdk7
   - openjdk6
   - oraclejdk7
+
