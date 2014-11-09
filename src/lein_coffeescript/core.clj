@@ -86,8 +86,8 @@
     (compile-coffeescript project conf)
     (catch Throwable t
       (if (conf-debug conf)
-        (.printStackTrace t)
-        (error t))
+        (.printStackTrace t))
+      (error t)
       (main/abort))))
 
 
