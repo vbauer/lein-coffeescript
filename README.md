@@ -69,7 +69,7 @@ To configure lein-coffeescript, put the :coffeescript parameter in the file proj
 :coffeescript [{:sources "src/*.cs"
                 :bare false
                 :map true}
-               {:sources ["src/*.coffee" "resources/*.cs"]}
+               {:sources ["src/*.coffee" "resources/*.cs"]
                 :bare true}]
 ```
 
