@@ -17,7 +17,7 @@
                  :excludes ["123"]
                  :map true
                  ;:join "app.js"
-                 ;:output "target/js"
+                 :output "target/js"
                  :bare false
                  :debug false
                  })
