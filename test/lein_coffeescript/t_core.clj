@@ -10,31 +10,32 @@
 
 (testable-privates
   lein-coffeescript.core
-    coffeescript)
+    coffeescript
+    file-path)
 
-(def ^:private DEF_ROOT "example/")
-(def ^:private DEF_OUTPUT "test-out/")
+(def ^:private DEF_ROOT "example")
+(def ^:private DEF_OUTPUT "test-out")
+(def ^:private DEF_GENERATED ["test.js" "test.js.map"])
 
-(defn- res [f] (str DEF_ROOT f))
-(defn- out [f] (str DEF_OUTPUT f))
+(defn- res [f] (file-path DEF_ROOT f))
+(defn- out [f] (file-path DEF_OUTPUT f))
 
-(def ^:private DEF_CONFIG
-  {:coffeescript
-   {:sources (res "resources/*.coffee")
-    :output DEF_OUTPUT
-    :map true
-    :bare false
-    :debug true}})
+(defn- cs [cfg] {:coffeescript cfg})
+(defn- conf []
+  {:sources (res (file-path "resources" "*.coffee"))
+   :output DEF_OUTPUT
+   :map true
+   :bare false
+   :debug true})
 
 
 ; Helper functions
 
-(defn- file-exists? [& parts]
-  (let [path (apply str parts)]
-    (and
-     (fs/exists? path)
-     (fs/file? path)
-     (> (fs/size path) 0))))
+(defn- file-exists? [path]
+  (and
+   (fs/exists? path)
+   (fs/file? path)
+   (> (fs/size path) 0)))
 
 (defn- clear-output[]
   (fs/delete-dir DEF_OUTPUT))
@@ -51,4 +52,6 @@
 ; Tests
 
 (fact "Check CoffeeScript processor"
-  (check-process DEF_CONFIG ["test.js" "test.map"]) => true)
+  (check-process (cs (conf)) DEF_GENERATED) => true
+  (check-process (cs [(conf)]) DEF_GENERATED) => true
+  (check-process (cs [(conf) (conf)]) DEF_GENERATED) => true)

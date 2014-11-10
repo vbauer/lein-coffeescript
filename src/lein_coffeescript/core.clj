@@ -1,9 +1,10 @@
 (ns ^{:author "Vladislav Bauer"}
   lein-coffeescript.core
+  (:import [java.io File])
   (:require [leiningen.npm :as npm]
             [leiningen.npm.process :as process]
             [leiningen.core.main :as main]
-            [org.satta.glob :as glob]
+            [me.raynes.fs :as fs]
             [clojure.java.io :as io]
             [clojure.string :as string]))
 
@@ -18,21 +19,20 @@
                  " - installation: npm install coffee-script -g"
                  " - configuration: https://github.com/vbauer/lein-coffeescript"])))
 
-(defn- to-coll [e]
-  (if (nil? e) [] (if (sequential? e) e [e])))
-
-(defn- scan-files [patterns]
-  (set (mapcat glob/glob patterns)))
+(defn- to-coll [e] (if (nil? e) [] (if (sequential? e) e [e])))
+(defn- scan-files [patterns] (set (mapcat fs/glob patterns)))
+(defn- file-path [& parts] (string/join File/separator parts))
 
 
 ; Internal API: Configuration
 
 (def ^:public DEF_COFFEE_SCRIPT_CMD "coffee")
-(def ^:private DEF_COFFEE_SCRIPT_DIR "node_modules/coffee-script/bin/")
+(def ^:private DEF_COFFEE_SCRIPT_DIR (file-path "node_modules" "coffee-script" "bin"))
 
 
 (defn- configs [project] (to-coll (get project :coffeescript)))
-(defn- config-files [conf k] (scan-files (to-coll (get conf k))))
+(defn- config-files [conf k]
+  (scan-files (to-coll (get conf k))))
 
 (defn- conf-sources [conf] (config-files conf :sources))
 (defn- conf-excludes [conf] (config-files conf :excludes))
@@ -60,7 +60,7 @@
 ; Internal API: Runner
 
 (defn- coffeescript-cmd []
-  (let [local (str DEF_COFFEE_SCRIPT_DIR DEF_COFFEE_SCRIPT_CMD)]
+  (let [local (file-path DEF_COFFEE_SCRIPT_DIR DEF_COFFEE_SCRIPT_CMD)]
     (if (.exists (io/file local)) local DEF_COFFEE_SCRIPT_CMD)))
 
 (defn- coffeescript-params [conf]
@@ -82,8 +82,9 @@
 
 (defn- process-config [project conf]
   (try
-    (npm/environmental-consistency project)
-    (compile-coffeescript project conf)
+    (do
+      (npm/environmental-consistency project)
+      (compile-coffeescript project conf))
     (catch Throwable t
       (if (conf-debug conf)
         (.printStackTrace t))
