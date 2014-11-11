@@ -15,7 +15,7 @@
 
 (def ^:private DEF_ROOT "example")
 (def ^:private DEF_OUTPUT "test-out")
-(def ^:private DEF_GENERATED ["test.js" "test.js.map"])
+(def ^:private DEF_GENERATED ["test.js" ["test.map" "test.js.map"]])
 
 (defn- res [f] (file-path DEF_ROOT f))
 (defn- out [f] (file-path DEF_OUTPUT f))
@@ -32,10 +32,18 @@
 ; Helper functions
 
 (defn- file-exists? [path]
-  (and
-   (fs/exists? path)
-   (fs/file? path)
-   (> (fs/size path) 0)))
+  (let [f (out path)]
+    (and
+     (fs/exists? f)
+     (fs/file? f)
+     (> (fs/size f) 0))))
+
+(defn- files-exist? [files]
+  (every?
+   #(if (sequential? %)
+      (some file-exists? %)
+      (file-exists? %))
+   files))
 
 (defn- clear-output[]
   (fs/delete-dir DEF_OUTPUT))
@@ -45,7 +53,7 @@
     (do
       (clear-output)
       (coffeescript cfg)
-      (every? #(file-exists? (out %)) files))
+      (files-exist? files))
     (finally (clear-output))))
 
 

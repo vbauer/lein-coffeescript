@@ -40,7 +40,7 @@
 (defn- conf-bare [conf] (get conf :bare false))
 (defn- conf-join [conf] (get conf :join))
 (defn- conf-output [conf] (get conf :output))
-(defn- conf-debug [conf] (get conf :debug))
+(defn- conf-debug [conf] (get conf :debug false))
 
 
 ; Internal API: Runner configuration
