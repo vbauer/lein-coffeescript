@@ -54,12 +54,16 @@
       (clear-output)
       (coffeescript cfg)
       (files-exist? files))
+    (catch Exception _ false)
     (finally (clear-output))))
 
 
 ; Tests
 
 (fact "Check CoffeeScript processor"
+  (check-process (cs nil) DEF_GENERATED) => false
+  (check-process (cs []) DEF_GENERATED) => false
+  (check-process (cs [{}]) DEF_GENERATED) => false
   (check-process (cs (conf)) DEF_GENERATED) => true
   (check-process (cs [(conf)]) DEF_GENERATED) => true
   (check-process (cs [(conf) (conf)]) DEF_GENERATED) => true)

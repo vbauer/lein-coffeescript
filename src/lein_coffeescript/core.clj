@@ -13,11 +13,12 @@
 
 (defn- error [ex]
   (println
-   (string/join "\r\n"
-                [(str "An error has occurred: " (.getMessage ex))
-                 "Something is wrong:"
-                 " - installation: npm install coffee-script -g"
-                 " - configuration: https://github.com/vbauer/lein-coffeescript"])))
+   (string/join
+    "\r\n"
+    [(str "An error has occurred: " (.getMessage ex))
+     "Something is wrong:"
+     " - installation: npm install coffee-script -g"
+     " - configuration: https://github.com/vbauer/lein-coffeescript"])))
 
 (defn- to-coll [e] (if (nil? e) [] (if (sequential? e) e [e])))
 (defn- scan-files [patterns] (set (mapcat fs/glob patterns)))
@@ -27,7 +28,8 @@
 ; Internal API: Configuration
 
 (def ^:public DEF_COFFEE_SCRIPT_CMD "coffee")
-(def ^:private DEF_COFFEE_SCRIPT_DIR (file-path "node_modules" "coffee-script" "bin"))
+(def ^:private DEF_COFFEE_SCRIPT_DIR
+  (file-path "node_modules" "coffee-script" "bin"))
 
 
 (defn- configs [project] (to-coll (get project :coffeescript)))
@@ -48,8 +50,11 @@
 (defn- source-list [conf]
   (let [src (conf-sources conf)
         ex (conf-excludes conf)
-        sources (remove (fn [s] (some #(.compareTo % s) ex)) src)]
-    (map #(.getAbsolutePath %) sources)))
+        sources (remove (fn [s] (some #(.compareTo % s) ex)) src)
+        result (map #(.getAbsolutePath %) sources)]
+    (if (empty? result)
+      (throw (RuntimeException. "Input source list is empty"))
+      result)))
 
 (defn- param-map [conf] (if (conf-map conf) ["--map"]))
 (defn- param-bare [conf] (if (conf-bare conf) ["--bare"]))
