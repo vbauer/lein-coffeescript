@@ -53,7 +53,8 @@
         sources (remove (fn [s] (some #(.compareTo % s) ex)) src)
         result (map #(.getAbsolutePath %) sources)]
     (if (empty? result)
-      (throw (RuntimeException. "Input source list is empty"))
+      (throw (RuntimeException.
+              "Source list is empty. Check parameters :sources & :excludes"))
       result)))
 
 (defn- param-map [conf] (if (conf-map conf) ["--map"]))
