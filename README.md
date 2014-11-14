@@ -131,6 +131,20 @@ Example project
 Just clone the current repository and try to play with [example project](https://github.com/vbauer/lein-coffeescript/tree/master/example) for better understanding how to use lein-coffeescript.
 
 
+Usage
+=====
+
+To compile CoffeeScript files using configuration from project.clj, you should use:
+```bash
+lein coffeescript
+```
+
+To show help:
+```bash
+lein help coffeescript
+```
+
+
 Thanks to
 =========
 
