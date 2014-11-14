@@ -53,7 +53,7 @@ Setup
 
 To enable lein-coffeescript for your project, put the following in the :plugins vector of your project.clj file:
 
-![latest-version](https://clojars.org/lein-coffeescript/latest-version.svg)
+[![Clojars Project](http://clojars.org/lein-coffeescript/latest-version.svg)](http://clojars.org/lein-coffeescript)
 
 
 Configuration
@@ -69,7 +69,7 @@ To configure lein-coffeescript, put the :coffeescript parameter in the file proj
 :coffeescript [{:sources "src/*.cs"
                 :bare false
                 :map true}
-               {:sources ["src/*.coffee" "resources/*.cs"]}
+               {:sources ["src/*.coffee" "resources/*.cs"]
                 :bare true}]
 ```
 
