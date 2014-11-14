@@ -31,7 +31,7 @@
       </header>
       <section>
         <h1>
-<a name="lein-coffeescript" class="anchor" href="#lein-coffeescript"><span class="octicon octicon-link"></span></a>lein-coffeescript</h1>
+<a id="lein-coffeescript" class="anchor" href="#lein-coffeescript" aria-hidden="true"><span class="octicon octicon-link"></span></a>lein-coffeescript</h1>
 
 <p><strong><a href="http://coffeescript.org">CoffeeScript</a> is a little language that compiles into JavaScript.</strong> Underneath that awkward Java-esque patina, JavaScript has always had a gorgeous heart. CoffeeScript is an attempt to expose the good parts of JavaScript in a simple way.</p>
 
@@ -43,81 +43,92 @@
 <a href="http://jarkeeper.com/vbauer/lein-coffeescript"><img src="http://jarkeeper.com/vbauer/lein-coffeescript/status.png" alt="Dependencies Status"></a></p>
 
 <h1>
-<a name="pre-requirements" class="anchor" href="#pre-requirements"><span class="octicon octicon-link"></span></a>Pre-requirements</h1>
+<a id="pre-requirements" class="anchor" href="#pre-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pre-requirements</h1>
 
 <p>Install <a href="http://nodejs.org/">NodeJS</a> and <a href="https://github.com/npm/npm">NPM</a> (package manager for Node) to install CoffeeScript:</p>
 
-<p>On Ubuntu:</p>
+<ul>
+<li>On Ubuntu:</li>
+</ul>
 
 <pre><code>sudo apt-get install nodejs
 </code></pre>
 
-<p>On Mac OS X:</p>
+<ul>
+<li>On Mac OS X:</li>
+</ul>
 
 <pre><code>brew install node
 </code></pre>
 
 <h1>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
 
 <p>Install <a href="https://www.npmjs.org/package/coffee-script">CoffeeScript</a> to use lein-coffeescript plugin. It could be done in few ways:</p>
 
 <ul>
 <li>Use NPM to install CoffeeScript globally:</li>
-</ul><pre><code>npm install lein-coffeescript -g
+</ul>
+
+<pre><code>npm install lein-coffeescript -g
 </code></pre>
 
 <ul>
 <li>You can also install CoffeeScript in the current directory:</li>
-</ul><pre><code>npm install lein-coffeescript
+</ul>
+
+<pre><code>npm install lein-coffeescript
 </code></pre>
 
 <ul>
 <li>Use <a href="https://github.com/bodil/lein-npm">lein-npm</a> plugin:</li>
-</ul><pre><code>lein npm install
+</ul>
+
+<pre><code>lein npm install
 </code></pre>
 
 <ul>
 <li>Use just Leiningen:</li>
-</ul><pre><code>lein deps
+</ul>
+
+<pre><code>lein deps
 </code></pre>
 
 <h2>
-<a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h2>
 
 <p>To enable lein-coffeescript for your project, put the following in the :plugins vector of your project.clj file:</p>
 
-<p><img src="https://clojars.org/lein-coffeescript/latest-version.svg" alt="latest-version"></p>
+<p><a href="http://clojars.org/lein-coffeescript"><img src="http://clojars.org/lein-coffeescript/latest-version.svg" alt="Clojars Project"></a></p>
 
 <h1>
-<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h1>
 
 <p>To configure lein-coffeescript, put the :coffeescript parameter in the file project.clj. It could be a single configuration (simple map) or a collection of configurations (for multiple configuration).</p>
 
-<div class="highlight highlight-clojure"><pre><span class="c1">; single configuration</span>
-<span class="ss">:coffeescript</span> <span class="p">{</span><span class="ss">:sources</span> <span class="s">"src/*.cs"</span><span class="p">}</span>
+<div class="highlight highlight-clojure"><pre><span class="pl-c"><span class="pl-pdc">;</span> single configuration</span>
+:coffeescript {:sources "src/*.cs"}
 
-<span class="c1">; multiple configurations</span>
-<span class="ss">:coffeescript</span> <span class="p">[{</span><span class="ss">:sources</span> <span class="s">"src/*.cs"</span>
-                <span class="ss">:bare</span> <span class="nv">false</span>
-                <span class="ss">:map</span> <span class="nv">true</span><span class="p">}</span>
-               <span class="p">{</span><span class="ss">:sources</span> <span class="p">[</span><span class="s">"src/*.coffee"</span> <span class="s">"resources/*.cs"</span><span class="p">]}</span>
-                <span class="ss">:bare</span> <span class="nv">true</span><span class="p">}]</span>
-</pre></div>
+<span class="pl-c"><span class="pl-pdc">;</span> multiple configurations</span>
+:coffeescript [{:sources "src/*.cs"
+                :bare false
+                :map true}
+               {:sources ["src/*.coffee" "resources/*.cs"]
+                :bare true}]</pre></div>
 
 <h2>
-<a name="configuration-parameters" class="anchor" href="#configuration-parameters"><span class="octicon octicon-link"></span></a>Configuration parameters</h2>
+<a id="configuration-parameters" class="anchor" href="#configuration-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration parameters</h2>
 
 <dl>
-<dt>:sources</dt>
-  <dd>List of input CoffeeScript sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a <a href="http://en.wikipedia.org/wiki/Glob_(programming)">Glob Patterns</a>
-</dd>
+
+  <dt>:sources</dt>
+  <dd>List of input CoffeeScript sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a <a href="http://en.wikipedia.org/wiki/Glob_(programming)">Glob Patterns</a>.</dd>
 
   <dt>:excludes</dt>
   <dd>List of glob patterns to prevent processing of some files. It is also possible to use both variants: single pattern and collection of patterns.</dd>
 
   <dt>:map</dt>
-  <dd>Generate source maps alongside the compiled JavaScript files. Adds <code>sourceMappingURL</code> directives to the JavaScript as well. Default value: false</dd>
+  <dd>Generate source maps alongside the compiled JavaScript files. Adds <code>sourceMappingURL</code> directives to the JavaScript as well. Default value: false.</dd>
 
   <dt>:bare</dt>
   <dd>Compile the JavaScript without the top-level function safety wrapper. Default value: false</dd>
@@ -126,43 +137,54 @@
   <dd>Before compiling, concatenate all scripts together in the order they were passed, and write them into the specified file. Useful for building large projects. It is not defined by default.</dd>
 
   <dt>:output</dt>
-  <dd>Write out all compiled JavaScript files into the specified directory. It is not defined by default. Source directory will be used of generated JS files</dd>
+  <dd>Write out all compiled JavaScript files into the specified directory. It is not defined by default. Source directory will be used of generated JS files.</dd>
 
-</dl><h2>
-<a name="hooks" class="anchor" href="#hooks"><span class="octicon octicon-link"></span></a>Hooks</h2>
+</dl>
+
+<h2>
+<a id="hooks" class="anchor" href="#hooks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hooks</h2>
 
 <p>To enable this plugin in the compile stage, use the following hook:</p>
 
-<div class="highlight highlight-clojure"><pre><span class="ss">:hooks</span> <span class="p">[</span><span class="nv">lein-coffeescript.plugin</span><span class="p">]</span>
-</pre></div>
+<div class="highlight highlight-clojure"><pre>:hooks [lein-coffeescript.plugin]</pre></div>
 
 <h1>
-<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h1>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h1>
 
 <h2>
-<a name="detailed-example" class="anchor" href="#detailed-example"><span class="octicon octicon-link"></span></a>Detailed example</h2>
+<a id="detailed-example" class="anchor" href="#detailed-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Detailed example</h2>
 
-<div class="highlight highlight-clojure"><pre><span class="ss">:coffeescript</span> <span class="p">{</span><span class="ss">:sources</span> <span class="s">"resources/*.coffee"</span>
-               <span class="ss">:excludes</span> <span class="p">[</span><span class="s">"resources/tests.coffee"</span> <span class="s">"resources/bad.coffee"</span><span class="p">]</span>
-               <span class="ss">:map</span> <span class="nv">true</span>
-               <span class="ss">:join</span> <span class="s">"app.js"</span>
-               <span class="ss">:output</span> <span class="s">"target/js"</span>
-               <span class="ss">:bare</span> <span class="nv">false</span>
-               <span class="ss">:debug</span> <span class="nv">true</span><span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-clojure"><pre>:coffeescript {:sources "resources/*.coffee"
+               :excludes ["resources/tests.coffee" "resources/bad.coffee"]
+               :map true
+               :join "app.js"
+               :output "target/js"
+               :bare false
+               :debug true}</pre></div>
 
 <h2>
-<a name="example-project" class="anchor" href="#example-project"><span class="octicon octicon-link"></span></a>Example project</h2>
+<a id="example-project" class="anchor" href="#example-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example project</h2>
 
 <p>Just clone the current repository and try to play with <a href="https://github.com/vbauer/lein-coffeescript/tree/master/example">example project</a> for better understanding how to use lein-coffeescript.</p>
 
 <h1>
-<a name="thanks-to" class="anchor" href="#thanks-to"><span class="octicon octicon-link"></span></a>Thanks to</h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>To compile CoffeeScript files using configuration from project.clj, you should use:</p>
+
+<div class="highlight highlight-bash"><pre>lein coffeescript</pre></div>
+
+<p>To show help:</p>
+
+<div class="highlight highlight-bash"><pre>lein <span class="pl-sf">help</span> coffeescript</pre></div>
+
+<h1>
+<a id="thanks-to" class="anchor" href="#thanks-to" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thanks to</h1>
 
 <p>CoffeeScript author <a href="https://github.com/jashkenas">Jeremy Ashkenas</a> and other developers who worked on this great project.</p>
 
 <h1>
-<a name="might-also-like" class="anchor" href="#might-also-like"><span class="octicon octicon-link"></span></a>Might also like</h1>
+<a id="might-also-like" class="anchor" href="#might-also-like" aria-hidden="true"><span class="octicon octicon-link"></span></a>Might also like</h1>
 
 <ul>
 <li>
@@ -173,8 +195,10 @@
 <a href="https://github.com/vbauer/lein-plantuml">lein-plantuml</a> - a Leiningen plugin for generating UML diagrams using PlantUML.</li>
 <li>
 <a href="https://github.com/asciidoctor/asciidoctor-lein-plugin">lein-asciidoctor</a> - A Leiningen plugin for generating documentation using Asciidoctor.</li>
-</ul><h1>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+</ul>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
 
 <p>Copyright © 2014 Vladislav Bauer</p>
 
