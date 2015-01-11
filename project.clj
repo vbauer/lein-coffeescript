@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[clj-glob "1.0.0" :exclusions [org.clojure/clojure]]
-                 [lein-npm "0.4.0" :exclusions [org.clojure/clojure]]
+                 [lein-npm "0.5.0" :exclusions [org.clojure/clojure]]
                  [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]]
 
   :plugins [[jonase/eastwood "0.2.1" :exclusions [org.clojure/clojure]]
