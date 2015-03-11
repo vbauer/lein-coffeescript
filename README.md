@@ -158,6 +158,7 @@ Might also like
 * [lein-jshint](https://github.com/vbauer/lein-jshint) - a Leiningen plugin for running javascript code through JSHint.
 * [lein-plantuml](https://github.com/vbauer/lein-plantuml) - a Leiningen plugin for generating UML diagrams using PlantUML.
 * [lein-asciidoctor](https://github.com/asciidoctor/asciidoctor-lein-plugin) - A Leiningen plugin for generating documentation using Asciidoctor.
+* [jabberjay](https://github.com/vbauer/jabberjay) - a simple framework for creating Jabber bots.
 
 
 License
