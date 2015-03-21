@@ -92,7 +92,7 @@ Configuration parameters
   <dd>Compile the JavaScript without the top-level function safety wrapper. Default value: false</dd>
 
   <dt>:join</dt>
-  <dd>Before compiling, concatenate all scripts together in the order they were passed, and write them into the specified file. Useful for building large projects. It is not defined by default.</dd>
+  <dd>Before compiling, concatenate all scripts together in the order they were passed, and write them into the specified file. Useful for building large projects. It is not defined by default. Example: `:join "bundle.coffee"`.</dd>
 
   <dt>:output</dt>
   <dd>Write out all compiled JavaScript files into the specified directory. It is not defined by default. Source directory will be used of generated JS files.</dd>

@@ -16,6 +16,8 @@
 (def ^:private DEF_ROOT "example")
 (def ^:private DEF_OUTPUT "test-out")
 (def ^:private DEF_GENERATED ["test.js" ["test.map" "test.js.map"]])
+(def ^:private DEF_BUNDLE_IN "bundle.coffee")
+(def ^:private DEF_BUNDLE_OUT ["bundle.js" ["bundle.map" "bundle.js.map"]])
 
 (defn- res [f] (file-path DEF_ROOT f))
 (defn- out [f] (file-path DEF_OUTPUT f))
@@ -66,4 +68,5 @@
   (check-process (cs [{}]) DEF_GENERATED) => false
   (check-process (cs (conf)) DEF_GENERATED) => true
   (check-process (cs [(conf)]) DEF_GENERATED) => true
-  (check-process (cs [(conf) (conf)]) DEF_GENERATED) => true)
+  (check-process (cs [(conf) (conf)]) DEF_GENERATED) => true
+  (check-process (cs [(assoc (conf) :join DEF_BUNDLE_IN)]) DEF_BUNDLE_OUT) => true)

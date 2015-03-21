@@ -23,6 +23,12 @@
 (defn- to-coll [e] (if (nil? e) [] (if (sequential? e) e [e])))
 (defn- scan-files [patterns] (set (mapcat fs/glob patterns)))
 (defn- file-path [& parts] (string/join File/separator parts))
+(defn- abs-path [f] (.getAbsolutePath f))
+
+(defn- join-files [files output]
+  (let [js (reduce str (map slurp files))]
+    (spit output js)
+    output))
 
 
 ; Internal API: Configuration
@@ -50,18 +56,24 @@
 (defn- source-list [conf]
   (let [src (conf-sources conf)
         ex (conf-excludes conf)
-        sources (remove (fn [s] (some #(.compareTo % s) ex)) src)
-        result (map #(.getAbsolutePath %) sources)]
-    (if (empty? result)
+        join (conf-join conf)
+        sources (remove (fn [s] (some #(.compareTo % s) ex)) src)]
+    (if (empty? sources)
       (throw (RuntimeException.
               "Source list is empty. Check parameters :sources & :excludes"))
-      result)))
+      (map abs-path
+           (if join
+             (do
+               (let [output (conf-output conf)]
+                 (if output (fs/mkdirs output))
+                 [(join-files sources (fs/file output join))]))
+             sources)))))
 
 (defn- param-map [conf] (if (conf-map conf) ["--map"]))
 (defn- param-bare [conf] (if (conf-bare conf) ["--bare"]))
-(defn- param-join [conf] (if-let [file (conf-join conf)] ["--join" file]))
 (defn- param-output [conf] (if-let [dir (conf-output conf)] ["--output" dir]))
 (defn- param-compile [conf] (concat ["--compile"] (source-list conf)))
+
 
 ; Internal API: Runner
 
@@ -73,7 +85,6 @@
   (concat
    (param-map conf)
    (param-bare conf)
-   (param-join conf)
    (param-output conf)
    (param-compile conf)))
 
