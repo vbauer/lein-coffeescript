@@ -6,7 +6,7 @@
 
 
   ; List of plugins
-  :plugins [[lein-coffeescript "0.1.5"]]
+  :plugins [[lein-coffeescript "0.1.6"]]
 
   ; List of hooks
   ; It's used for running lein-coffeescript during compile phase
