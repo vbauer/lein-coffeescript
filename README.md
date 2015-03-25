@@ -33,11 +33,11 @@ Install [CoffeeScript](https://www.npmjs.org/package/coffee-script) to use lein-
 
 * Use NPM to install CoffeeScript globally:
 ```
-npm install lein-coffeescript -g
+npm install coffee-script -g
 ```
 * You can also install CoffeeScript in the current directory:
 ```
-npm install lein-coffeescript
+npm install coffee-script
 ```
 * Use [lein-npm](https://github.com/bodil/lein-npm) plugin:
 ```
