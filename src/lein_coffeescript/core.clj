@@ -5,6 +5,7 @@
             [leiningen.npm.process :as process]
             [leiningen.core.main :as main]
             [me.raynes.fs :as fs]
+            [citizen.os :as os]
             [clojure.java.io :as io]
             [clojure.string :as string]))
 
@@ -20,15 +21,20 @@
      " - installation: npm install coffee-script -g"
      " - configuration: https://github.com/vbauer/lein-coffeescript"])))
 
-(defn- to-coll [e] (if (nil? e) [] (if (sequential? e) e [e])))
-(defn- scan-files [patterns] (set (mapcat fs/glob patterns)))
-(defn- file-path [& parts] (string/join File/separator parts))
-(defn- abs-path [f] (.getAbsolutePath f))
+(defn- clean-path [p]
+  (if os/windows?
+    (string/replace p #"/" "\\")
+    (string/replace p #"\\" "/")))
 
 (defn- join-files [files output]
   (let [js (reduce str (map slurp files))]
     (spit output js)
     output))
+
+(defn- to-coll [e] (if (nil? e) [] (if (sequential? e) e [e])))
+(defn- scan-files [patterns] (set (mapcat fs/glob (map clean-path patterns))))
+(defn- file-path [& parts] (string/join File/separator parts))
+(defn- abs-path [f] (.getAbsolutePath f))
 
 
 ; Internal API: Configuration
