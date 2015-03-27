@@ -4,8 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[clj-glob "1.0.0" :exclusions [org.clojure/clojure]]
-                 [lein-npm "0.5.0" :exclusions [org.clojure/clojure]]
+  :dependencies [[lein-npm "0.5.0" :exclusions [org.clojure/clojure]]
                  [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]
                  [citizen/os "0.1.0-SNAPSHOT"]]
 

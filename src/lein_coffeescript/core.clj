@@ -6,7 +6,6 @@
             [leiningen.core.main :as main]
             [me.raynes.fs :as fs]
             [citizen.os :as os]
-            [clojure.java.io :as io]
             [clojure.string :as string]))
 
 
@@ -85,7 +84,7 @@
 
 (defn- coffeescript-cmd []
   (let [local (file-path DEF_COFFEE_SCRIPT_DIR DEF_COFFEE_SCRIPT_CMD)]
-    (if (.exists (io/file local)) local DEF_COFFEE_SCRIPT_CMD)))
+    (if (.exists (fs/file local)) local DEF_COFFEE_SCRIPT_CMD)))
 
 (defn- coffeescript-params [conf]
   (concat
