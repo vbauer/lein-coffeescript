@@ -23,8 +23,8 @@
 
 (defn- clean-path [p]
   (if os/windows?
-    (string/replace p #"/" "\\")
-    (string/replace p #"\\" "/")))
+    (string/replace p "/" "\\")
+    (string/replace p "\\" "/")))
 
 (defn- join-files [files output]
   (let [js (reduce str (map slurp files))]
