@@ -16,14 +16,8 @@ Pre-requirements
 
 Install [NodeJS](http://nodejs.org/) and [NPM](https://github.com/npm/npm) (package manager for Node) to install CoffeeScript:
 
-* On Ubuntu:
-```
-sudo apt-get install nodejs
-```
-* On Mac OS X:
-```
-brew install node
-```
+* On Ubuntu: `sudo apt-get install nodejs`
+* On Mac OS X: `brew install node`
 
 
 Installation
@@ -31,22 +25,10 @@ Installation
 
 Install [CoffeeScript](https://www.npmjs.org/package/coffee-script) to use lein-coffeescript plugin. It could be done in few ways:
 
-* Use NPM to install CoffeeScript globally:
-```
-npm install lein-coffeescript -g
-```
-* You can also install CoffeeScript in the current directory:
-```
-npm install lein-coffeescript
-```
-* Use [lein-npm](https://github.com/bodil/lein-npm) plugin:
-```
-lein npm install
-```
-* Use just Leiningen:
-```
-lein deps
-```
+* Use NPM to install CoffeeScript globally: `npm install coffee-script -g`
+* You can also install CoffeeScript in the current directory: `npm install coffee-script`
+* Use [lein-npm](https://github.com/bodil/lein-npm) plugin: `lein npm install`
+* Use just Leiningen: `lein deps`
 
 Setup
 -----
@@ -134,15 +116,9 @@ Just clone the current repository and try to play with [example project](https:/
 Usage
 =====
 
-To compile CoffeeScript files using configuration from project.clj, you should use:
-```bash
-lein coffeescript
-```
+To compile CoffeeScript files using configuration from project.clj, you should use: `lein coffeescript`
 
-To show help:
-```bash
-lein help coffeescript
-```
+To show help: `lein help coffeescript`
 
 
 Thanks to
@@ -154,6 +130,7 @@ CoffeeScript author [Jeremy Ashkenas](https://github.com/jashkenas) and other de
 Might also like
 ===============
 
+* [lein-typescript](https://github.com/vbauer/lein-typescript) - a Leiningen plugin for running TypeScript compiler.
 * [lein-jslint](https://github.com/vbauer/lein-jslint) - a Leiningen plugin for running javascript code through JSLint.
 * [lein-jshint](https://github.com/vbauer/lein-jshint) - a Leiningen plugin for running javascript code through JSHint.
 * [lein-plantuml](https://github.com/vbauer/lein-plantuml) - a Leiningen plugin for generating UML diagrams using PlantUML.
