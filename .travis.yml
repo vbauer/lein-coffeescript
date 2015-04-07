@@ -9,7 +9,7 @@ before_install:
   - sudo npm install -g coffee-script
 script: lein2 with-profile dev midje && lein2 uberjar
 jdk:
-  - openjdk7
   - openjdk6
+  - openjdk7
   - oraclejdk7
-
+  - oraclejdk8
