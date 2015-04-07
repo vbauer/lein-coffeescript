@@ -5,7 +5,6 @@
             [leiningen.npm.process :as process]
             [leiningen.core.main :as main]
             [me.raynes.fs :as fs]
-            [citizen.os :as os]
             [clojure.string :as string]))
 
 
@@ -21,9 +20,10 @@
      " - configuration: https://github.com/vbauer/lein-coffeescript"])))
 
 (defn- clean-path [p]
-  (if os/windows?
-    (string/replace p "/" "\\")
-    (string/replace p "\\" "/")))
+  (if (not (nil? p))
+    (if (.startsWith (System/getProperty "os.name") "Windows")
+      (string/replace p "/" "\\")
+      (string/replace p "\\" "/"))))
 
 (defn- join-files [files output]
   (let [js (reduce str (map slurp files))]
