@@ -136,6 +136,7 @@ Might also like
 * [lein-plantuml](https://github.com/vbauer/lein-plantuml) - a Leiningen plugin for generating UML diagrams using PlantUML.
 * [lein-asciidoctor](https://github.com/asciidoctor/asciidoctor-lein-plugin) - A Leiningen plugin for generating documentation using Asciidoctor.
 * [jabberjay](https://github.com/vbauer/jabberjay) - a simple framework for creating Jabber bots.
+* [coderwall-clj](https://github.com/vbauer/coderwall-clj) - a tiny CoderWall client for Clojure.
 
 
 License
