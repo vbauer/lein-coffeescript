@@ -1,4 +1,4 @@
-(defproject lein-coffeescript "0.1.8"
+(defproject lein-coffeescript "0.1.9-SNAPSHOT"
   :description "A Leiningen plugin for running CoffeeScript compiler"
   :url "https://github.com/vbauer/lein-coffeescript"
   :license {:name "Eclipse Public License"
