@@ -9,7 +9,7 @@
 ; Internal API: Configuration
 
 (def ^:private DEF_COFFEESCRIPT_DEP "coffee-script")
-(def ^:private DEF_COFFEESCRIPT_VER ">=1.9.1")
+(def ^:private DEF_COFFEESCRIPT_VER ">=1.9.3")
 
 
 ; Internal API: Middlewares
