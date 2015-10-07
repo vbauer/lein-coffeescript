@@ -80,7 +80,7 @@ Configuration parameters
   <dd>Write out all compiled JavaScript files into the specified directory. It is not defined by default. Source directory will be used of generated JS files.</dd>
 
   <dt>:watch</dt>
-  <dd>Watch files for changes, rerunning the specified command when any file is updated.</dd>
+  <dd>Watch files for changes, rerunning the specified command when any file is updated. Default value: false</dd>
 
 </dl>
 

@@ -20,5 +20,5 @@
                  :output "target/js"
                  :bare false
                  :debug false
-                 :watch true
+                 ;:watch true
                  })
