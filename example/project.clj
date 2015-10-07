@@ -6,7 +6,7 @@
 
 
   ; List of plugins
-  :plugins [[lein-coffeescript "0.1.7"]]
+  :plugins [[lein-coffeescript "0.1.9-SNAPSHOT"]]
 
   ; List of hooks
   ; It's used for running lein-coffeescript during compile phase
@@ -20,4 +20,5 @@
                  :output "target/js"
                  :bare false
                  :debug false
+                 :watch true
                  })

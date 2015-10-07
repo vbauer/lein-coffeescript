@@ -54,6 +54,7 @@
 (defn- conf-join [conf] (get conf :join))
 (defn- conf-output [conf] (get conf :output))
 (defn- conf-debug [conf] (get conf :debug false))
+(defn- conf-watch [conf] (get conf :watch false))
 
 
 ; Internal API: Runner configuration
@@ -78,6 +79,7 @@
 (defn- param-bare [conf] (if (conf-bare conf) ["--bare"]))
 (defn- param-output [conf] (if-let [dir (conf-output conf)] ["--output" dir]))
 (defn- param-compile [conf] (concat ["--compile"] (source-list conf)))
+(defn- param-watch [conf] (if (conf-watch conf) ["--watch"]))
 
 
 ; Internal API: Runner
@@ -90,6 +92,7 @@
   (concat
    (param-map conf)
    (param-bare conf)
+   (param-watch conf)
    (param-output conf)
    (param-compile conf)))
 
