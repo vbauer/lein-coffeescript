@@ -92,6 +92,7 @@ To enable this plugin in the compile stage, use the following hook:
 :hooks [lein-coffeescript.plugin]
 ```
 
+
 Examples
 ========
 
@@ -121,6 +122,16 @@ Usage
 To compile CoffeeScript files using configuration from project.clj, you should use: `lein coffeescript`
 
 To show help: `lein help coffeescript`
+
+
+Unit testing
+============
+
+To run unit tests:
+
+```bash
+lein test
+```
 
 
 Thanks to
