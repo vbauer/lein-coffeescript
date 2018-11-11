@@ -5,6 +5,7 @@
             [leiningen.npm.process :as process]
             [leiningen.core.main :as main]
             [me.raynes.fs :as fs]
+            [clojure.java.io :as io]
             [clojure.string :as string]))
 
 
@@ -32,7 +33,6 @@
 
 (defn- to-coll [e] (if (nil? e) [] (if (sequential? e) e [e])))
 (defn- scan-files [patterns] (set (mapcat fs/glob (map clean-path patterns))))
-(defn- file-path [& parts] (string/join File/separator parts))
 (defn- abs-path [f] (.getAbsolutePath f))
 
 
@@ -40,7 +40,7 @@
 
 (def ^:public DEF_COFFEE_SCRIPT_CMD "coffee")
 (def ^:private DEF_COFFEE_SCRIPT_DIR
-  (file-path "node_modules" "coffee-script" "bin"))
+  (io/file "node_modules" "coffee-script" "bin"))
 
 
 (defn- configs [project] (to-coll (get project :coffeescript)))
@@ -85,7 +85,7 @@
 ; Internal API: Runner
 
 (defn- coffeescript-cmd []
-  (let [local (file-path DEF_COFFEE_SCRIPT_DIR DEF_COFFEE_SCRIPT_CMD)]
+  (let [local (io/file DEF_COFFEE_SCRIPT_DIR DEF_COFFEE_SCRIPT_CMD)]
     (if (.exists (fs/file local)) local DEF_COFFEE_SCRIPT_CMD)))
 
 (defn- coffeescript-params [conf]
