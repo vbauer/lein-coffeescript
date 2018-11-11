@@ -8,7 +8,6 @@ The golden rule of CoffeeScript is: *"It's just JavaScript"*. The code compiles 
 [lein-coffeescript](https://github.com/vbauer/lein-coffeescript) is a Leiningen plugin that allows to use CoffeeScript compiler.
 
 [![Build Status](https://travis-ci.org/vbauer/lein-coffeescript.svg?branch=master)](https://travis-ci.org/vbauer/lein-coffeescript)
-[![Dependencies Status](http://jarkeeper.com/vbauer/lein-coffeescript/status.png)](http://jarkeeper.com/vbauer/lein-coffeescript)
 
 
 Pre-requirements
