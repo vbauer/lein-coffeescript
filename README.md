@@ -37,7 +37,7 @@ To enable lein-coffeescript for your project, put the following in the :plugins 
 
 ```clojure
 ; Use latest version instead of "X.X.X"
-[lein-coffeescript "X.X.X"]
+:plugins [[lein-coffeescript "X.X.X"]]
 ```
 
 
