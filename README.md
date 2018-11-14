@@ -8,6 +8,7 @@ The golden rule of CoffeeScript is: *"It's just JavaScript"*. The code compiles 
 [lein-coffeescript](https://github.com/vbauer/lein-coffeescript) is a Leiningen plugin that allows to use CoffeeScript compiler.
 
 [![Build Status](https://travis-ci.org/vbauer/lein-coffeescript.svg?branch=master)](https://travis-ci.org/vbauer/lein-coffeescript)
+[![Clojars Project](https://img.shields.io/clojars/v/lein-coffeescript.svg)](https://clojars.org/lein-coffeescript)
 
 
 Pre-requirements
@@ -34,7 +35,10 @@ Setup
 
 To enable lein-coffeescript for your project, put the following in the :plugins vector of your project.clj file:
 
-[![Clojars Project](http://clojars.org/lein-coffeescript/latest-version.svg)](http://clojars.org/lein-coffeescript)
+```clojure
+; Use latest version instead of "X.X.X"
+[lein-coffeescript "X.X.X"]
+```
 
 
 Configuration
